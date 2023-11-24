@@ -1,6 +1,7 @@
 import 'package:bookly_clean_arch/core/utils/app_theme.dart';
 import 'package:bookly_clean_arch/features/splash/presentation/view/splash_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() {
   runApp(const BooklyApp());
@@ -12,11 +13,18 @@ class BooklyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Bookly App',
-      theme: AppTheme.mainTheme,
-      home: const SplashView(),
+    return ScreenUtilInit(
+      designSize: const Size(375, 812),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (_, child) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Bookly App',
+          theme: AppTheme.mainTheme,
+          home: const SplashView(),
+        );
+      },
     );
   }
 }
