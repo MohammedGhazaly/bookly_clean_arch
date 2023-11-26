@@ -1,4 +1,6 @@
 import 'package:bookly_clean_arch/core/constants/assets.dart';
+import 'package:bookly_clean_arch/core/constants/values.dart';
+import 'package:bookly_clean_arch/features/home/presentation/view/home_view.dart';
 import 'package:flutter/material.dart';
 
 class SplashViewBody extends StatefulWidget {
@@ -17,23 +19,8 @@ class _SplashViewBodyState extends State<SplashViewBody>
   @override
   void initState() {
     super.initState();
-    animationController =
-        AnimationController(vsync: this, duration: const Duration(seconds: 2));
-    slidingAnimation = Tween<Offset>(begin: Offset(0, 10), end: Offset(0, 0))
-        .animate(animationController);
-    fadeTransitionAnimation =
-        Tween<double>(begin: 0, end: 1).animate(animationController);
-
-    animationController.forward();
-    // slidingAnimation.addListener(() {
-    //   setState(() {});
-    // });
-    // slidingController =
-    //     AnimationController(vsync: this, duration: const Duration(seconds: 1));
-
-    // fadeTransitionAnimation.addListener(() {
-    //   setState(() {});
-    // });
+    initAnimation();
+    navigateToHome();
   }
 
   @override
@@ -68,5 +55,33 @@ class _SplashViewBodyState extends State<SplashViewBody>
         ),
       ],
     );
+  }
+
+  void initAnimation() {
+    animationController =
+        AnimationController(vsync: this, duration: const Duration(seconds: 2));
+    slidingAnimation = Tween<Offset>(begin: Offset(0, 10), end: Offset(0, 0))
+        .animate(animationController);
+    fadeTransitionAnimation =
+        Tween<double>(begin: 0, end: 1).animate(animationController);
+
+    animationController.forward();
+    // slidingAnimation.addListener(() {
+    //   setState(() {});
+    // });
+    // slidingController =
+    //     AnimationController(vsync: this, duration: const Duration(seconds: 1));
+
+    // fadeTransitionAnimation.addListener(() {
+    //   setState(() {});
+    // });
+  }
+
+  void navigateToHome() {
+    Future.delayed(AppValues.waitDuration, () {
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
+        return HomeView();
+      }));
+    });
   }
 }
