@@ -14,6 +14,7 @@ class FeaturedBooksItem extends StatelessWidget {
         child: AspectRatio(
           aspectRatio: 1 / 1.5,
           child: Container(
+            // margin: EdgeInsets.symmetric(horizontal: 16.w),
             decoration: BoxDecoration(
               image: DecorationImage(
                 fit: BoxFit.cover,
