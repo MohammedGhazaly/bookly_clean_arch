@@ -15,7 +15,7 @@ class CustomAppBar extends StatelessWidget {
         children: [
           Image.asset(
             AppAssets.logo,
-            width: 75.w,
+            width: 85.w,
           ),
           InkWell(
             borderRadius: BorderRadius.circular(50),

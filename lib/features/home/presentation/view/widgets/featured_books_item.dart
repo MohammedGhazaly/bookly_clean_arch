@@ -9,18 +9,15 @@ class FeaturedBooksItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(8.r),
-      child: SizedBox(
-        height: 230.h,
-        child: AspectRatio(
-          aspectRatio: 1 / 1.5,
-          child: Container(
-            // margin: EdgeInsets.symmetric(horizontal: 16.w),
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                fit: BoxFit.cover,
-                image: AssetImage(
-                  AppAssets.testImage,
-                ),
+      child: AspectRatio(
+        aspectRatio: 1 / 1.5,
+        child: Container(
+          // margin: EdgeInsets.symmetric(horizontal: 16.w),
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              fit: BoxFit.cover,
+              image: AssetImage(
+                AppAssets.testImage,
               ),
             ),
           ),
