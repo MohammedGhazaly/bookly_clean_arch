@@ -1,5 +1,5 @@
 import 'package:bookly_clean_arch/core/utils/app_styles.dart';
-import 'package:bookly_clean_arch/features/home/presentation/view/widgets/best_seller_list_view_item.dart';
+import 'package:bookly_clean_arch/features/home/presentation/view/widgets/best_seller_list_view.dart';
 import 'package:bookly_clean_arch/features/home/presentation/view/widgets/custom_app_bar.dart';
 import 'package:bookly_clean_arch/features/home/presentation/view/widgets/featured_books_list_view.dart';
 import 'package:flutter/material.dart';
@@ -10,45 +10,52 @@ class HomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(
-            height: 16.h,
-          ),
+    return CustomScrollView(
+      slivers: [
+        SliverToBoxAdapter(
+          child: SafeArea(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  height: 16.h,
+                ),
 
-          // TODO: implement listener
+                // TODO: implement listener
 
-          CustomAppBar(),
-          SizedBox(
-            height: 45.h,
-          ),
-          SizedBox(
-            height: 230.h,
-            child: FeaturedBooksListView(),
-          ),
-          SizedBox(
-            height: 50.h,
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 30.w),
-            child: Text(
-              "Best seller",
-              style: AppStyles.style18.copyWith(
-                fontWeight: FontWeight.w600,
-              ),
+                CustomAppBar(),
+                SizedBox(
+                  height: 45.h,
+                ),
+                SizedBox(
+                  height: 230.h,
+                  child: FeaturedBooksListView(),
+                ),
+                SizedBox(
+                  height: 50.h,
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 30.w),
+                  child: Text(
+                    "Best seller",
+                    style: AppStyles.style18.copyWith(
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+                // SizedBox(
+                //   height: 20.h,
+                // ),
+              ],
             ),
           ),
-          SizedBox(
-            height: 20.h,
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 30.w),
-            child: BestSellerListViewItem(),
-          )
-        ],
-      ),
+        ),
+        SliverFillRemaining(
+          child: Padding(
+              padding: EdgeInsets.only(left: 30.w, right: 15.w),
+              child: BestSellerListView()),
+        )
+      ],
     );
   }
 }
