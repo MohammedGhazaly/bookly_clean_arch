@@ -36,7 +36,9 @@ class HomeViewBody extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 30.w),
             child: Text(
               "Best seller",
-              style: AppStyles.style18,
+              style: AppStyles.style18.copyWith(
+                fontWeight: FontWeight.w600,
+              ),
             ),
           ),
           SizedBox(
