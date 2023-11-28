@@ -1,7 +1,9 @@
 import 'package:bookly_clean_arch/core/constants/assets.dart';
 import 'package:bookly_clean_arch/core/constants/values.dart';
+import 'package:bookly_clean_arch/core/utils/app_router.dart';
 import 'package:bookly_clean_arch/features/home/presentation/view/home_view.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
@@ -78,10 +80,17 @@ class _SplashViewBodyState extends State<SplashViewBody>
   }
 
   void navigateToHome() {
-    Future.delayed(AppValues.waitDuration, () {
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
-        return HomeView();
-      }));
-    });
+    Future.delayed(
+      AppValues.waitDuration,
+      () {
+        // Navigator.pushReplacement(context,
+        //     MaterialPageRoute(builder: (context) {
+        //   return HomeView();
+        // }));
+        GoRouter.of(context).push(
+          AppRoutes.kHomeViewRoute,
+        );
+      },
+    );
   }
 }

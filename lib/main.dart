@@ -1,4 +1,5 @@
 import 'package:bookly_clean_arch/core/utils/app_theme.dart';
+import 'package:bookly_clean_arch/core/utils/app_router.dart';
 import 'package:bookly_clean_arch/features/splash/presentation/view/splash_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -18,11 +19,11 @@ class BooklyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (_, child) {
-        return MaterialApp(
+        return MaterialApp.router(
           debugShowCheckedModeBanner: false,
           title: 'Bookly App',
           theme: AppTheme.mainTheme,
-          home: const SplashView(),
+          routerConfig: AppRoutes.router,
         );
       },
     );
