@@ -1,6 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:bookly_clean_arch/core/constants/values.dart';
 import 'package:bookly_clean_arch/core/utils/app_styles.dart';
+import 'package:bookly_clean_arch/core/utils/widgets/custom_button.dart';
+import 'package:bookly_clean_arch/features/book_details/presentation/view/widgets/book_details_action.dart';
 import 'package:bookly_clean_arch/features/book_details/presentation/view/widgets/book_details_custom_app_bar.dart';
 import 'package:bookly_clean_arch/features/book_details/presentation/view/widgets/book_details_rating.dart';
 import 'package:bookly_clean_arch/features/home/presentation/view/widgets/custom_book_image.dart';
@@ -51,7 +53,11 @@ class BookDetailsViewBody extends StatelessWidget {
             SizedBox(
               height: 15.h,
             ),
-            BookDetailsRating()
+            BookDetailsRating(),
+            SizedBox(
+              height: 35.h,
+            ),
+            BookDetailsAction()
           ],
         ),
       ),
