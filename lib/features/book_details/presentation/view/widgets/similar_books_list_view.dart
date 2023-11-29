@@ -1,11 +1,9 @@
-import 'package:bookly_clean_arch/core/utils/app_router.dart';
 import 'package:bookly_clean_arch/features/home/presentation/view/widgets/custom_book_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
 
-class FeaturedBooksListView extends StatelessWidget {
-  const FeaturedBooksListView({super.key});
+class SimilrBooksListView extends StatelessWidget {
+  const SimilrBooksListView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,11 +12,9 @@ class FeaturedBooksListView extends StatelessWidget {
       itemCount: 10,
       itemBuilder: (context, index) {
         return Padding(
-          padding: EdgeInsets.symmetric(horizontal: 8.w),
+          padding: EdgeInsets.symmetric(horizontal: 5.w),
           child: InkWell(
-            onTap: () {
-              GoRouter.of(context).push(AppRoutes.kHomeDetailsViewRoute);
-            },
+            onTap: () {},
             child: CustomBookImage(),
           ),
         );

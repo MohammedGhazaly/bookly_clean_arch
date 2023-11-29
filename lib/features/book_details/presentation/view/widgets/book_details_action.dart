@@ -15,7 +15,7 @@ class BookDetailsAction extends StatelessWidget {
             text: "1000.99 \$",
             backgroundColor: Colors.white,
             forgroundColor: Colors.black,
-            textStyle: AppStyles.style18.copyWith(fontWeight: FontWeight.w600),
+            textStyle: AppStyles.style16.copyWith(fontWeight: FontWeight.w900),
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(16.r),
               bottomLeft: Radius.circular(16.r),
