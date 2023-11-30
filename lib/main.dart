@@ -9,7 +9,7 @@ import 'package:hive_flutter/adapters.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  Hive.initFlutter();
+  await Hive.initFlutter();
   Hive.registerAdapter(BookEntityAdapter());
   await Hive.openBox<BookEntity>(AppValues.feauredBox);
   await Hive.openBox<BookEntity>(AppValues.newestBox);
