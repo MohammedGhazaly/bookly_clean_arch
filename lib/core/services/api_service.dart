@@ -8,5 +8,6 @@ class ApiService {
 
   get({required String endPoint}) async {
     var response = dio.get("${ApiConstants.baseUrl}$endPoint");
+    return response;
   }
 }
