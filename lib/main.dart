@@ -1,10 +1,16 @@
+import 'package:bookly_clean_arch/core/constants/values.dart';
 import 'package:bookly_clean_arch/core/utils/app_theme.dart';
 import 'package:bookly_clean_arch/core/utils/app_router.dart';
-import 'package:bookly_clean_arch/features/splash/presentation/view/splash_view.dart';
+import 'package:bookly_clean_arch/features/home/domain/entities/book_entity.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hive/hive.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  Hive.registerAdapter(BookEntityAdapter());
+  await Hive.openBox(AppValues.feauredBox);
   runApp(const BooklyApp());
 }
 
