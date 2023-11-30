@@ -5,12 +5,14 @@ import 'package:bookly_clean_arch/features/home/domain/entities/book_entity.dart
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:hive/hive.dart';
+import 'package:hive_flutter/adapters.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  Hive.initFlutter();
   Hive.registerAdapter(BookEntityAdapter());
   await Hive.openBox<BookEntity>(AppValues.feauredBox);
+  await Hive.openBox<BookEntity>(AppValues.newestBox);
   runApp(const BooklyApp());
 }
 

@@ -24,6 +24,8 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
     final response = await apiService.get(
         endPoint: "volumes?Filtering=free-ebooks&q=mystery&sorting=newest");
     List<BookEntity> books = getBooksList(response);
+    await cacheBooks(books, AppValues.newestBox);
+
     return books;
   }
 
