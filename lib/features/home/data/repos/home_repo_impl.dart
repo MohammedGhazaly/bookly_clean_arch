@@ -1,9 +1,12 @@
+import 'dart:io';
+
 import 'package:bookly_clean_arch/core/errors/failure.dart';
 import 'package:bookly_clean_arch/features/home/domain/data_sources/home_local_data_source.dart';
 import 'package:bookly_clean_arch/features/home/domain/data_sources/home_remote_data_source.dart';
 import 'package:bookly_clean_arch/features/home/domain/entities/book_entity.dart';
 import 'package:bookly_clean_arch/features/home/domain/repos/home_repo.dart';
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 
 class HomeRepoImpl implements HomeRepo {
   final HomeRemoteDataSource homeRemoteDataSource;
@@ -21,7 +24,14 @@ class HomeRepoImpl implements HomeRepo {
       var remoteBooks = await homeRemoteDataSource.fetchFeaturedBooks();
       return right(remoteBooks);
     } catch (e) {
-      return left(Failure());
+      if (e is SocketException) {
+        return left(NetworkFailure(
+            errorMessage: "No internet connection, please try again later."));
+      } else if (e is DioException) {
+        return left(ServerFailure.fromDioError(e));
+      } else {
+        return left(ServerFailure(errorMessage: e.toString()));
+      }
     }
   }
 
@@ -35,7 +45,14 @@ class HomeRepoImpl implements HomeRepo {
       var remoteBooks = await homeRemoteDataSource.fetchNewestBooks();
       return right(remoteBooks);
     } catch (e) {
-      return left(Failure());
+      if (e is SocketException) {
+        return left(NetworkFailure(
+            errorMessage: "No internet connection, please try again later."));
+      } else if (e is DioException) {
+        return left(ServerFailure.fromDioError(e));
+      } else {
+        return left(ServerFailure(errorMessage: e.toString()));
+      }
     }
   }
 }
