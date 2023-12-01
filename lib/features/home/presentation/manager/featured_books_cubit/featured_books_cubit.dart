@@ -6,8 +6,9 @@ import 'package:meta/meta.dart';
 part 'featured_books_state.dart';
 
 class FeaturedBooksCubit extends Cubit<FeaturedBooksState> {
-  late FeaturedBooksUseCase featuredBooksUseCase;
-  FeaturedBooksCubit() : super(FeaturedBooksInitial());
+  final FeaturedBooksUseCase featuredBooksUseCase;
+  FeaturedBooksCubit({required this.featuredBooksUseCase})
+      : super(FeaturedBooksInitial());
   Future<void> fetchFeaturedBooks() async {
     emit(FeaturedBooksLoading());
     var result = await featuredBooksUseCase.invoke();

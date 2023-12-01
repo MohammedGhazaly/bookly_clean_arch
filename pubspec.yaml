@@ -29,7 +29,6 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   auto_size_text: ^3.0.0
-  bloc: ^8.1.2
   cupertino_icons: ^1.0.2
   dartz: ^0.10.1
   dio: ^5.3.4
@@ -38,17 +37,18 @@ dependencies:
   flutter_bloc: ^8.1.3
   flutter_screenutil: ^5.9.0
   font_awesome_flutter: ^10.6.0
+  get_it: ^7.6.4
   go_router: ^12.1.1
   google_fonts: ^6.1.0
   hive: ^2.2.3
   hive_flutter: ^1.1.0
 
 dev_dependencies:
-  hive_generator:
-  build_runner:
+  build_runner: null
   flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
+  hive_generator: null
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
