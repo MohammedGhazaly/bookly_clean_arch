@@ -1,4 +1,5 @@
 import 'package:bookly_clean_arch/core/constants/values.dart';
+import 'package:bookly_clean_arch/core/simple_bloc_observer.dart';
 import 'package:bookly_clean_arch/core/utils/app_theme.dart';
 import 'package:bookly_clean_arch/core/utils/app_router.dart';
 import 'package:bookly_clean_arch/core/utils/di/service_locator_di.dart';
@@ -22,6 +23,8 @@ void main() async {
   await Hive.openBox<BookEntity>(AppValues.newestBox);
   createApiServiceLocator();
   createHomeRepoServiceLocator();
+  Bloc.observer = SimpleBlocObserver();
+
   runApp(
     const BooklyApp(),
   );
