@@ -5,15 +5,19 @@ import 'package:bookly_clean_arch/features/book_details/presentation/view/widget
 import 'package:bookly_clean_arch/features/book_details/presentation/view/widgets/book_details_custom_app_bar.dart';
 import 'package:bookly_clean_arch/features/book_details/presentation/view/widgets/book_details_rating.dart';
 import 'package:bookly_clean_arch/features/book_details/presentation/view/widgets/similar_books_list_view.dart';
+import 'package:bookly_clean_arch/features/home/domain/entities/book_entity.dart';
 import 'package:bookly_clean_arch/features/home/presentation/view/widgets/custom_book_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BookDetailsViewBody extends StatelessWidget {
-  const BookDetailsViewBody({super.key});
+  final BookEntity bookEntity;
+
+  const BookDetailsViewBody({super.key, required this.bookEntity});
 
   @override
   Widget build(BuildContext context) {
+    print(bookEntity.authors);
     return SafeArea(
         child: Padding(
       padding: EdgeInsets.symmetric(horizontal: 30.w),
@@ -29,13 +33,13 @@ class BookDetailsViewBody extends StatelessWidget {
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 75.w),
-              child: CustomBookImage(),
+              child: CustomBookImage(image: bookEntity.image ?? ""),
             ),
             SizedBox(
               height: 43.h,
             ),
             AutoSizeText(
-              "The jungle book",
+              bookEntity.title ?? "",
               maxLines: 2,
               minFontSize: 24,
               textAlign: TextAlign.center,
@@ -46,8 +50,10 @@ class BookDetailsViewBody extends StatelessWidget {
             SizedBox(
               height: 6.h,
             ),
+
             Text(
-              "Rudyard Kipling",
+              bookEntity.authors?.join(", ") ?? "",
+              textAlign: TextAlign.center,
               style: AppStyles.style16
                   .copyWith(color: Colors.white.withOpacity(0.5)),
             ),
@@ -76,9 +82,9 @@ class BookDetailsViewBody extends StatelessWidget {
               height: 115.h,
               child: SimilrBooksListView(),
             ),
-            SizedBox(
-              height: 40.h,
-            ),
+            // SizedBox(
+            //   height: 40.h,
+            // ),
           ],
         ),
       ),

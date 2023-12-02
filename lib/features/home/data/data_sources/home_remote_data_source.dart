@@ -3,6 +3,7 @@ import 'package:bookly_clean_arch/core/services/api_service.dart';
 import 'package:bookly_clean_arch/features/home/data/models/book_response_model/book.dart';
 import 'package:bookly_clean_arch/features/home/domain/data_sources/home_remote_data_source.dart';
 import 'package:bookly_clean_arch/features/home/domain/entities/book_entity.dart';
+import 'package:dio/dio.dart';
 import 'package:hive/hive.dart';
 
 class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
@@ -13,6 +14,8 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
   Future<List<BookEntity>> fetchFeaturedBooks() async {
     final response = await apiService.get(
         endPoint: "volumes?Filtering=free-ebooks&q=mystery");
+    print("Ok");
+
     List<BookEntity> books = getBooksList(response);
 
     await cacheBooks(books, AppValues.feauredBox);
@@ -29,9 +32,9 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
     return books;
   }
 
-  List<BookEntity> getBooksList(response) {
+  List<BookEntity> getBooksList(Response response) {
     List<BookEntity> books = [];
-    for (var book in response["items"]) {
+    for (var book in response.data["items"]) {
       books.add(Book.fromJson(book));
     }
     return books;

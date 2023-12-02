@@ -13,10 +13,7 @@ class SimilrBooksListView extends StatelessWidget {
       itemBuilder: (context, index) {
         return Padding(
           padding: EdgeInsets.symmetric(horizontal: 5.w),
-          child: InkWell(
-            onTap: () {},
-            child: CustomBookImage(),
-          ),
+          child: InkWell(onTap: () {}, child: Container()),
         );
       },
     );

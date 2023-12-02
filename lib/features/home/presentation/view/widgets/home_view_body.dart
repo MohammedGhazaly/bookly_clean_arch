@@ -1,7 +1,7 @@
 import 'package:bookly_clean_arch/core/utils/app_styles.dart';
 import 'package:bookly_clean_arch/features/home/presentation/view/widgets/best_seller_list_view.dart';
 import 'package:bookly_clean_arch/features/home/presentation/view/widgets/custom_app_bar.dart';
-import 'package:bookly_clean_arch/features/home/presentation/view/widgets/featured_books_list_view.dart';
+import 'package:bookly_clean_arch/features/home/presentation/view/widgets/featured_books_list_view_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -29,7 +29,7 @@ class HomeViewBody extends StatelessWidget {
                 ),
                 SizedBox(
                   height: 230.h,
-                  child: FeaturedBooksListView(),
+                  child: FeaturedBooksListViewBuilder(),
                 ),
                 SizedBox(
                   height: 50.h,
