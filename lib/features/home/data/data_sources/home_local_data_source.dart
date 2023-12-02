@@ -5,9 +5,18 @@ import 'package:hive/hive.dart';
 
 class HomeLocalDataSourceImpl implements HomeLocalDataSource {
   @override
-  List<BookEntity> fetchFeaturedBooks() {
+  List<BookEntity> fetchFeaturedBooks({required int pageNumber}) {
+    int startIndex = pageNumber * 10;
+    int endIndex = (pageNumber + 1) * 10;
     var box = Hive.box<BookEntity>(AppValues.feauredBox);
-    return box.values.toList();
+    int length = box.values.length;
+
+    // endIndex 50
+    // length 50 endIndex 49
+    if (startIndex >= length || endIndex > length) {
+      return [];
+    }
+    return box.values.toList().sublist(startIndex, endIndex);
   }
 
   @override

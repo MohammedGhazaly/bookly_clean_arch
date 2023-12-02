@@ -8,6 +8,7 @@ class ApiService {
 
   Future<Response<dynamic>> get({required String endPoint}) async {
     var response = await dio.get("${ApiConstants.baseUrl}$endPoint");
+
     return response;
   }
 }

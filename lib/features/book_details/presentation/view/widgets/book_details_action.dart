@@ -1,5 +1,5 @@
 import 'package:bookly_clean_arch/core/utils/app_styles.dart';
-import 'package:bookly_clean_arch/core/utils/widgets/custom_button.dart';
+import 'package:bookly_clean_arch/core/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

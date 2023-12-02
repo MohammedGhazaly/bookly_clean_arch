@@ -1,11 +1,14 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:bookly_clean_arch/core/constants/assets.dart';
 import 'package:bookly_clean_arch/core/utils/app_styles.dart';
+import 'package:bookly_clean_arch/features/home/domain/entities/book_entity.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BestSellerListViewItem extends StatelessWidget {
-  const BestSellerListViewItem({super.key});
+  final BookEntity book;
+  const BestSellerListViewItem({super.key, required this.book});
 
   @override
   Widget build(BuildContext context) {
@@ -16,12 +19,11 @@ class BestSellerListViewItem extends StatelessWidget {
           AspectRatio(
             aspectRatio: 1 / 1.5,
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(8.r),
-              child: Image.asset(
-                AppAssets.testImage,
-                fit: BoxFit.fill,
-              ),
-            ),
+                borderRadius: BorderRadius.circular(8.r),
+                child: CachedNetworkImage(
+                  imageUrl: book.image ?? "",
+                  fit: BoxFit.cover,
+                )),
           ),
           SizedBox(
             width: 15.w,
@@ -31,7 +33,7 @@ class BestSellerListViewItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Harry Potter and the goblet of fire",
+                  book.title ?? "",
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style:
@@ -41,7 +43,7 @@ class BestSellerListViewItem extends StatelessWidget {
                   height: 4,
                 ),
                 Text(
-                  "J.K. Rowling",
+                  book.authors?.join(",") ?? "",
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: AppStyles.style14
