@@ -1,3 +1,4 @@
+import 'package:bookly_clean_arch/core/widgets/custom_fading_widget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -13,6 +14,18 @@ class CustomBookImage extends StatelessWidget {
       child: AspectRatio(
           aspectRatio: 1 / 1.5,
           child: CachedNetworkImage(
+            progressIndicatorBuilder: (context, url, progress) {
+              return CustomFadingWidget(
+                child: Container(
+                  color: Colors.grey,
+                ),
+              );
+            },
+            errorWidget: (context, url, error) {
+              return Container(
+                color: Colors.grey,
+              );
+            },
             imageUrl: image,
             fit: BoxFit.cover,
           )
